@@ -6,9 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.hamcrest.Matchers.is;
+
 import org.springframework.test.web.servlet.ResultActions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -33,6 +37,21 @@ public class HelloControllerTest {
             mvc.perform(get("/hello"))  //MockMVC를 통해 /hello주소로 GET요청을 한다. 체이닝이 지원되어 아래와 같이 여러 검증기능을 이어서 선언 가능
                     .andExpect(status().isOk())   // mvePerform 결과를 검증한다.200,404,500 등의 상태를 점검 한다.
                     .andExpect(content().string(hello)); //mvc.perform의 결과를 검증한다 Controller에서 Hello가 리턴되기 때문에 이 값이 맞는지 검증함.
+        }
+
+        @Test
+        public void helloDto가_리턴된다() throws Exception{
+            String name = "hello";
+            int amount = 1000;
+
+            mvc.perform(
+                    get("/hello/dto")
+                            .param("name",name)
+                            .param("amount",String.valueOf(amount)))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.name",is(name)))
+                    .andExpect(jsonPath("$.amount",is(amount)));
+
         }
 
 }
