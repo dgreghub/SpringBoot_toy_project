@@ -28,9 +28,9 @@ public class Posts {
     private String author;
 
     @Builder //해당 클래스의 빌더 패턴 클래스를 생성
-    public Posts(String title, String contet, String author) {
+    public Posts(String title, String content, String author) {
         this.title= title;
-        this.content=contet;
+        this.content=content;
         this.author=author;
     }
 }

@@ -31,7 +31,7 @@ public class PostsRepositoryTest {
 
         postsRepository.save(Posts.builder() // 테이블 posts 에 Insert와 Update를 수행함.
                 .title(title)
-                .contet(content)
+                .content(content)
                 .author("")
                 .build());
 
