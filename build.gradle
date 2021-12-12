@@ -21,12 +21,18 @@ group 'com.springboot.toy'
 version '1.0-SNAPSHOT'
 sourceCompatibility= 1.8
 
-repositories {
+repositories {//라이브러리들을 어떤 원격 저장소에 받아올지 결정
     mavenCentral()
     jcenter()
 }
 
-dependencies {
+dependencies {//의존성 부여
+    implementation('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok')
     implementation ('org.springframework.boot:spring-boot-starter-web')
+    implementation ('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation ('com.h2database:h2')
     testImplementation ('org.springframework.boot:spring-boot-starter-test')
+    testImplementation ('org.projectlombok:lombok')
+    testAnnotationProcessor('org.projectlombok:lombok')
 }
