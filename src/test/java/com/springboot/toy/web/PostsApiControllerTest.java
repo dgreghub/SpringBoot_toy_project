@@ -1,6 +1,8 @@
 package com.springboot.toy.web;
 
+import com.springboot.toy.domain.posts.Posts;
 import com.springboot.toy.domain.posts.PostsRepository;
+import com.springboot.toy.web.dto.PostsSaveRequestDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +38,25 @@ public class PostsApiControllerTest {
 
     @Test
     public void Posts_등록된다() throws Exception{
+        //given
+        String title = "title";
+        String content = "content";
+        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
+                .title(title)
+                .content(content)
+                .author("author")
+                .build();
 
+        String url = "http://localhost:"+port +"/api/v1/posts";
+
+        //when
+        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url,requestDto,Long.class);
+
+        //then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+        List<Posts> all = postsRepository.findAll();
+        assertThat(all.get(0).getTitle()).isEqualTo(title);
+        assertThat(all.get(0).getContent()).isEqualTo(content);
     }
 }
