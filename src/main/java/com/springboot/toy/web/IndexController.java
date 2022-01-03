@@ -1,5 +1,6 @@
 package com.springboot.toy.web;
 
+import com.springboot.toy.config.auth.LoginUser;
 import com.springboot.toy.config.auth.dto.SessionUser;
 import com.springboot.toy.service.PostsService;
 import com.springboot.toy.web.dto.PostsResponseDto;
@@ -22,10 +23,9 @@ public class IndexController {
 
     @GetMapping("/")
     //index를 반환하므로 index.mustache로 전환되어 View Resolver 가 처리하게 된다.
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) { // 로그인 성공시 Seesion의 User 값을 가져온다. 어노테이션으로 대체한다.
         model.addAttribute("posts", postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");// 로그인 성공시 Seesion의 User 값을 가져온다.
         if(user != null){
             model.addAttribute("userName",user.getName());
         }
