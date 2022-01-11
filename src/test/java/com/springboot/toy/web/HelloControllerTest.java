@@ -7,13 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.is;
 
-import org.springframework.test.web.servlet.ResultActions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -37,7 +35,6 @@ public class HelloControllerTest {
         @Autowired // 스프링이 관리하는 Bean을 주입 받는다.
         private MockMvc mvc; // 웹 API를 테스트 할때 사용합니다.
                              // 스프링 MVC 테스트의 시작입니다. 이 클래스를 통해 HTTP GET, POST 등에 대한 API 테스트를 할 수 있다
-        @WithMockUser(roles="USER")
         @Test
         public void hello가_리턴된다() throws Exception{
             String hello ="hello";
@@ -47,7 +44,6 @@ public class HelloControllerTest {
                     .andExpect(content().string(hello)); //mvc.perform의 결과를 검증한다 Controller에서 Hello가 리턴되기 때문에 이 값이 맞는지 검증함.
         }
 
-        @WithMockUser(roles="USER")
         @Test
         public void helloDto가_리턴된다() throws Exception{
             String name = "hello";
