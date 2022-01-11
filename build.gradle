@@ -36,7 +36,10 @@ dependencies {//의존성 부여
     implementation ('org.springframework.boot:spring-boot-starter-oauth2-client')
     implementation ('org.springframework.boot:spring-boot-starter-security')
     implementation ('org.springframework.session:spring-session-jdbc')
+
+    testImplementation ('org.springframework.security:spring-security-test')
     testImplementation ('org.springframework.boot:spring-boot-starter-test')
     testImplementation ('org.projectlombok:lombok')
+
     testAnnotationProcessor('org.projectlombok:lombok')
 }
