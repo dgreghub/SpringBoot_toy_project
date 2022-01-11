@@ -35,7 +35,7 @@ public class HelloControllerTest {
         @Autowired // 스프링이 관리하는 Bean을 주입 받는다.
         private MockMvc mvc; // 웹 API를 테스트 할때 사용합니다.
                              // 스프링 MVC 테스트의 시작입니다. 이 클래스를 통해 HTTP GET, POST 등에 대한 API 테스트를 할 수 있다
-        @Test
+       /* @Test
         public void hello가_리턴된다() throws Exception{
             String hello ="hello";
 
@@ -57,6 +57,6 @@ public class HelloControllerTest {
                     .andExpect(jsonPath("$.name",is(name)))
                     .andExpect(jsonPath("$.amount",is(amount)));
 
-        }
+        }*/
 
 }
