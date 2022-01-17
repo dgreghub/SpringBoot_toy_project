@@ -3,9 +3,15 @@
 REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=SpringBoot_toy_project
 
+echo ">일단은 이러면 안되지만 빌드 한번 더!"
+
+cd $REPOSITORY/zip/
+
+./gradlew build
+
 echo "> Build 파일 복사"
 
-cp $REPOSITORY/zip/*.zip $REPOSITORY/
+cp $REPOSITORY/zip/build.libs/*.zip $REPOSITORY/
 
 echo "> 현재 구동중인 애플리케이션 pid 확인"
 
