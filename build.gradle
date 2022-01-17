@@ -18,7 +18,7 @@ apply plugin : 'io.spring.dependency-management'
 
 
 group 'com.springboot.toy'
-version '1.0-SNAPSHOT'
+version '1.0.1-SNAPSHOT'
 sourceCompatibility= 1.8
 
 repositories {//라이브러리들을 어떤 원격 저장소에 받아올지 결정
