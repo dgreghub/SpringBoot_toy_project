@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOSITORY=/home/ec2-user/app/step2/zip
+REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=SpringBoot_toy_project
 
 echo "> Build 파일 복사"
