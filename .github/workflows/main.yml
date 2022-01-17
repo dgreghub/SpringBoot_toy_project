@@ -15,7 +15,7 @@ on:
 
 env:
   S3_BUCKET_NAME : mygregbucket
-  PROJECT_NAME : SpringBoot_toy_project
+  PROJECT_NAME : zip
 
   # Steps represent a sequence of tasks that will be executed as part of the job
 jobs: 
@@ -53,4 +53,4 @@ jobs:
                   run : aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
 
                 - name: Code Deploy
-                  run : aws deploy create-deployment --application-name greg-CodeDeploy-role --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name greg-CodeDeploy-role-group --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
+                  run : aws deploy create-deployment --application-name greg-CodeDeploy-role --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name greg-CodeDeploy-role-group --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/SpringBoot_toy_project.zip
