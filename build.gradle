@@ -18,7 +18,7 @@ apply plugin : 'io.spring.dependency-management'
 
 
 group 'com.springboot.toy'
-version '1.0.5-SNAPSHOT'+new Date().format("yyyyMMddHHmmss")
+version '1.0.6-SNAPSHOT'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility= 1.8
 
 repositories {//라이브러리들을 어떤 원격 저장소에 받아올지 결정
