@@ -1,10 +1,7 @@
 package com.springboot.toy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-@EnableJpaAuditing //JPA Auditing 활성화
-// 스프링부트 자동설정 해당 위치의 설정 읽어옴
 @SpringBootApplication
 //Main class
 public class Application {
